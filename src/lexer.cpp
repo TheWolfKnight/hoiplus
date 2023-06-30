@@ -56,8 +56,12 @@ private:
         return false;
       }
     }
-
     return true;
+  }
+
+  NodeType get_node_type(std::string node_text) {
+    NodeType r = NO_UNDEFINED;
+    return r;
   }
 
 public:
@@ -70,7 +74,9 @@ public:
   }
 
   std::unique_ptr<Node> get_node(std::string node_text) {
-    std::unique_ptr<Node> r(new Node(NO_CHANGE_NAMESPACE));
+    NodeType type = this->get_node_type(node_text);
+
+    std::unique_ptr<Node> r(new Node(type));
     return r;
   }
 
